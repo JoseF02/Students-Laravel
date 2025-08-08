@@ -2,14 +2,25 @@
 
 use App\Http\Controllers\SecondTestController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\TestController;
+use App\Models\Teachers;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
     return 'Hello From Laravel';
 });
 
-Route::get('about',function(){
+Route::get('teachers',[TeachersController::class,'index']);
+Route::get('add-teachers',[TeachersController::class,'add']);
+Route::get('show-teacher/{id}',[TeachersController::class,'show']);
+Route::get('update-teacher/{id}',[TeachersController::class,'update']);
+Route::get('delete-teacher/{id}',[TeachersController::class,'delete']);
+
+/*Route::get('teachers',function(){
+    return Teachers::all();
+});*/
+/*Route::get('about',function(){
     return 'Aboout Us';
 });
 
@@ -30,19 +41,19 @@ Route::fallback(function(){
     return 'This Page Not Exists';
 });
 
-//Route::get('about-us/{name}/{id}',function($name,$id){
-    //$name="tester";
-    //$email='tester@gmail.com';
-    //return view('aboutus')->with('name',$name)->with('email',$email);
-    //return view('aboutus',compact('name','email'));
-    //return view('aboutus',['name'=>$name,'email'=>$email]);
-    //return view('aboutus',compact('name','id'));
-//});
+Route::get('about-us/{name}/{id}',function($name,$id){
+    $name="tester";
+    $email='tester@gmail.com';
+    return view('aboutus')->with('name',$name)->with('email',$email);
+    return view('aboutus',compact('name','email'));
+    return view('aboutus',['name'=>$name,'email'=>$email]);
+    return view('aboutus',compact('name','id'));
+});
 
 Route::view('contact-us/{name}/{id}','contactus');
 
-//Route::get('students',[StudentController::class,'index']);
-//Route::get('about-us',[StudentController::class,'aboutUs']);
+Route::get('students',[StudentController::class,'index']);
+Route::get('about-us',[StudentController::class,'aboutUs']);
 
 Route::controller(StudentController::class)->group(function(){
     Route::get('students','index');
@@ -50,4 +61,5 @@ Route::controller(StudentController::class)->group(function(){
 });
 
 Route::get('invoke',TestController::class);
-Route::resource('second-test',SecondTestController::class);
+Route::resource('second-test',SecondTestController::class);*/
+
