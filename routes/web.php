@@ -11,11 +11,20 @@ Route::get('/',function(){
     return 'Hello From Laravel';
 });
 
-Route::get('teachers',[TeachersController::class,'index']);
+Route::get('add-data',[StudentController::class,'addData']);
+Route::get('get-data',[StudentController::class,'getData']);
+Route::get('update-data',[StudentController::class,'updateData']);
+Route::get('delete-data',[StudentController::class,'deleteData']);
+Route::get('where-conditions',[StudentController::class,'whereConditions']);
+Route::get('queryScope',[StudentController::class,'queryScope']);
+Route::get('secondQuery',[StudentController::class,'secondQuery']);
+
+
+/*Route::get('teachers',[TeachersController::class,'index']);
 Route::get('add-teachers',[TeachersController::class,'add']);
 Route::get('show-teacher/{id}',[TeachersController::class,'show']);
 Route::get('update-teacher/{id}',[TeachersController::class,'update']);
-Route::get('delete-teacher/{id}',[TeachersController::class,'delete']);
+Route::get('delete-teacher/{id}',[TeachersController::class,'delete']);*/
 
 /*Route::get('teachers',function(){
     return Teachers::all();
