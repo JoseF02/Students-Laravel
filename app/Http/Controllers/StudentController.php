@@ -52,7 +52,9 @@ class StudentController extends Controller
    {
         /*$items=DB::table('students')
             ->avg('age');*/
-        $items = Student::find(53);
+        //$items = Student::find(53);
+        //$items = Student::onlyTrashed()->get();
+        $items = Student::withTrashed()->get();
         return $items;
    }
 
@@ -74,7 +76,7 @@ class StudentController extends Controller
    public function deleteData()
    {
         //DB::table('students')->where('id',51)->delete();
-        Student::findOrFail(48)->delete();
+        Student::findOrFail(20)->delete();
 
         return 'Deleted Successfully';
    }
@@ -101,14 +103,14 @@ class StudentController extends Controller
 
    public function queryScope()
    {
-        $items = Student::male()->get();
+        $items = Student::female(35)->get();
 
         return $items;
    }
 
    public function secondQuery()
    {
-        $items = Student::male()->get();
+        $items = Student::female()->get();
 
         return $items;
    }
